@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Khand:wght@700&family=Open+Sans&display=swap");
+
+/* Global settings */
+body {
+  height: calc(100vh - 80px);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Khand", sans-serif;
+  font-weight: 700;
+}
+
+p {
+  font-family: "Open Sans";
+}
+
+footer {
+  background-color: rgb(25, 40, 49);
+}
+
+.hero-bg {
+  height: 60vh;
+  background: url("../img/hero-bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+#about {
+  background-color: rgb(237, 237, 237);
+}
