@@ -2,34 +2,61 @@
 {% load static %}
 {% block content %}
 
-<section id="main" class="container-fluid hero-bg text-center d-flex align-items-center">
-    <div class="row">
-        <div class="container col-lg-5 col-md-8 col-s-12">
-            <h1 class="text-light text-uppercase display-1">Headline</h3>
-            <p class="text-light lead text-start">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam dolorum iusto fugiat quibusdam officia est facilis cumque hic unde odio veritatis necessitatibus optio aspernatur nesciunt minima incidunt, labore sapiente rerum maxime pariatur tempore. Accusantium iusto deleniti ullam dolorem placeat tempore minima corrupti quia debitis, soluta itaque totam sit quis, ratione et nemo unde architecto officiis quae, error rem? Possimus, harum.</p>     
-            </div>
+<section id="main" class="container-fluid hero-bg">
+        <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-10 d-flex flex-column justify-content-center">
+            <h2 class="display-3 text-light text-center text-uppercase">Give a gift to those in need</h2>
         </div>
     </div>
 </section>
 
 <section id="locations" class="container">
-    <div class="row">
-        <div class="col-md-6 align-items-center d-flex flex-column justify-content-center text-left mt-5">
-            <h2 class="display-3">Lorem ipsum</h2>
-            <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam laudantium libero, dignissimos ipsum magnam iure ad minus tenetur fugit sapiente velit quam iste commodi nesciunt ut nulla. Facilis, sit pariatur assumenda repellat necessitatibus, officia impedit id eius similique praesentium maxime.</p>
+    <div class="row my-5 h-100 justify-content-center align-items-center">
+        <div class="col-sm-12 col-lg-6 col">
+            <h3 class="display-4">Locations</h3>
+            <p class="lead">We are active all over the world and our volunteers work tirelessly to provide for the needy</p>
         </div>
-        <div class="col-md-6 mt-5">
-            <img class="img-fluid" src="{% static 'img/world-map-vector.png' %}" alt="">
+        <div class="col-sm-12 col-lg-6">
+            <img id="world-map" src="{% static '/img/world-map-vector.png' %}" alt="">
         </div>
     </div>
 </section>
 
-<section id="about">
-    <div class="row">
-    <h2 class="display-3 text-center">About Us</h2>
-    <div class="col-4"></div>
-    <div class="col-4"></div>
-    <div class="col-4"></div>
+<section id="about" class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="display-4 text-center text-uppercase">About us</h3>
+                <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem itaque labore qui autem, quod perferendis unde nam sint accusantium animi possimus error minima quos laudantium a ut deserunt dolorum vero expedita non, nihil iusto assumenda tempore ipsum? Deserunt, aliquid placeat.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-lg-4">
+                <h4 class="display-5 text-center">Headline 1</h4>
+            </div>
+            <div class="col-md-12 col-lg-4">
+                <h4 class="display-5 text-center">Headline 1</h4>
+            </div>
+            <div class="col-md-12 col-lg-4">
+                <h4 class="display-5 text-center">Headline 1</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="news-letter">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="display-6 text-light text-center my-5">Subscribe to our newsletter</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="mb-5 d-flex justify-content-center">
+                    <input type="email" class="form-control w-25 rounded-0" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                    <button class="btn btn-warning rounded-0">Subscribe</button>
+                </div>
+        </div>
     </div>
 </section>
 

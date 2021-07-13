@@ -33,3 +33,15 @@ footer {
 #about {
   background-color: rgb(237, 237, 237);
 }
+
+#world-map {
+  width: 100%;
+}
+
+#about {
+  background-color: rgb(237, 237, 237);
+}
+
+#news-letter {
+  background-color: rgb(0, 110, 199);
+}
