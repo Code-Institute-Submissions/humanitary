@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'django.contrib.staticfiles',
     'home',
+    'shop',
 ]
 
 SITE_ID = 1
