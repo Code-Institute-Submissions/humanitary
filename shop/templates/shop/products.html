@@ -1,2 +1,30 @@
 {% extends 'base.html' %}
 {% load static %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row bg-white">
+        <h2 class="text-center text-uppercase display-2">Gift Shop</h2>
+    </div>
+</div>
+<section id="products" class="justify-content-center align-items-center">
+    <div class="container">
+        <div class="row">
+            {% for product in products %}
+                <div class="col-sm-12 col-md-6 col-lg-4 my-3">
+                    <div class="card h-100">
+                        <img src="{{ product.image.url }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title text-uppercase">{{ product.name }}</h5>
+                            <p class="card-text">{{ product.description }}</p>
+                            <a href="#" class="btn btn-warning btn-rounded">{{ product.price }}</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+    </div>
+</div>
+</section>
+
+{% endblock content %}

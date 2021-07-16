@@ -1,10 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Khand:wght@700&family=Open+Sans&display=swap");
 
 /* Global settings */
-body {
-  height: calc(100vh - 80px);
-}
-
 h1,
 h2,
 h3,
@@ -27,11 +23,12 @@ p {
   background-size: cover;
 }
 
-/* Middle page */
+/* Middle start page */
 #about {
   background-color: rgb(237, 237, 237);
 }
 
+/* World map */
 #world-map {
   width: 100%;
 }
