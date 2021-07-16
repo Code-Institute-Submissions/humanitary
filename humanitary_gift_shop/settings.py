@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'shop',
+    'cart',
 ]
 
 SITE_ID = 1
