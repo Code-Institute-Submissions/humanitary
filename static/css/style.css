@@ -1,6 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Khand:wght@700&family=Open+Sans&display=swap");
 
 /* Global settings */
+html,
+body {
+  height: 100%;
+}
+
 h1,
 h2,
 h3,

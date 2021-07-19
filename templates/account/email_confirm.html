@@ -7,6 +7,11 @@
 
 
 {% block content %}
+{% include 'includes/navbar.html' %}
+<div class="container-fluid h-100">
+  <div class="row justify-content-center py-5 mt-5">
+    <div class="col-sm-12 col-md-10 col-lg-4">
+      <div class="card p-3 text-left shadow p-3 mb-5 bg-body rounded d-flex flex-column text-center">
 <h1>{% trans "Confirm E-mail Address" %}</h1>
 
 {% if confirmation %}
@@ -17,7 +22,7 @@
 
 <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
 {% csrf_token %}
-    <button type="submit">{% trans 'Confirm' %}</button>
+    <button class="btn btn-warning rounded-5 text-uppercase" type="submit">{% trans 'Confirm' %}</button>
 </form>
 
 {% else %}
@@ -27,5 +32,10 @@
 <p>{% blocktrans %}This e-mail confirmation link expired or is invalid. Please <a href="{{ email_url }}">issue a new e-mail confirmation request</a>.{% endblocktrans %}</p>
 
 {% endif %}
+</div>
+</div>
+</div>
+</div>
+{% include 'includes/footer.html' %}
 
 {% endblock %}
