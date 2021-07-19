@@ -44,11 +44,14 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
     'django.contrib.staticfiles',
     'home',
     'shop',
     'cart',
 ]
+
+SOCIALACCOUNT_PROVIDERS = {'facebook': {}, 'google': {}, 'twitter': {}}
 
 SITE_ID = 1
 

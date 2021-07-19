@@ -12,6 +12,12 @@
   object-fit: cover;
 }
 
+.flex-field {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 /* Large devices */
 @media only screen and (max-width: 1400px) {
   .card-img-top {
@@ -21,6 +27,7 @@
   }
 }
 
+/* Medium devices */
 @media only screen and (max-width: 768px) {
   .card {
     width: 18rem;
