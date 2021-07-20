@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'django.contrib.staticfiles',
     'home',
+    'accounts',
     'shop',
     'cart',
 ]
@@ -55,7 +56,6 @@ SOCIALACCOUNT_PROVIDERS = {'facebook': {}, 'google': {}, 'twitter': {}}
 
 SITE_ID = 1
 
-LOGIN_REDIRECT_URL = '/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -74,6 +74,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'templates', 'allauth')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -95,7 +96,19 @@ AUTHENTICATION_BACKENDS = [
 
 ]
 
+LOGIN_URL = '/accounts/login'
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Settings for email and email as username
+
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
+LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'humanitary_gift_shop.wsgi.application'
 

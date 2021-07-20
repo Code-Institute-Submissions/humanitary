@@ -1,0 +1,17 @@
+li {
+  list-style-type: none;
+}
+
+.socialaccount_provider {
+  text-decoration: none;
+  color: black;
+  background-color: rgb(255, 193, 7);
+  padding: 0.375rem 0.75rem;
+  border-radius: 5px;
+  transition: background-color 0.12s ease;
+}
+
+.socialaccount_provider:hover {
+  color: black;
+  background-color: rgb(252, 205, 64);
+}

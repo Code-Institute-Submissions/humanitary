@@ -30,8 +30,14 @@
         <li class="nav-item">
             <a class="nav-link fs-5" href="{% url 'cart' %}"><i class="bi bi-cart"></i></a>
         </li>
-          <li class="nav-item">
+            {% if user.is_authenticated %}
+              <li class="nav-item">
           <a class="nav-link fs-5" href="#"><i class="bi bi-person"></i></a>
+
+            {% else %}
+            <li class="nav-item">
+          <a class="nav-link fs-5" href="{% url 'account_login' %}"><i class="bi bi-person"></i></a>
+            {% endif %}
         </li>
           </ul>
         </li>
