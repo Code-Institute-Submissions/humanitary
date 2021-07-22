@@ -1,8 +1,13 @@
 from django.shortcuts import render
 from accounts.models import *
-
+from shop.models import *
+from django.http import JsonResponse
+import json
 
 # Create your views here.
+
+# Used code snippets from Denis Ivy's tutorial on
+# django E-commerce, although somewhat modified to fit my own needs.
 
 
 def shopping_cart(request):
@@ -19,3 +24,32 @@ def shopping_cart(request):
 
     context = {'items': items, 'order': order}
     return render(request, 'cart/cart.html', context)
+
+
+def updateCart(request):
+    data = json.loads(request.body)
+    productId = data['productId']
+    action = data['action']
+
+    print('action:', action)
+    print('productId:', productId)
+
+    customer = request.user.customer
+    product = Product.objects.get(id=productId)
+    order, created = Order.objects.get_or_create(
+        customer=customer, complete=False)
+
+    orderItem, created = OrderItem.objects.get_or_create(
+        order=order, product=product)
+
+    if action == 'add':
+        orderItem.quantity = (orderItem.quantity + 1)
+    elif action == 'remove':
+        orderItem.quantity = (orderItem.quantity - 1)
+
+    orderItem.save()
+
+    if orderItem.quantity <= 0:
+        orderItem.delete()
+
+    return JsonResponse('Item was added', safe=False)

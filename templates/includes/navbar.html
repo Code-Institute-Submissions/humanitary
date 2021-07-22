@@ -27,8 +27,13 @@
         {% endif %}
 
         </li>
-        <li class="nav-item">
+        <li class="nav-item d-flex align-items-center">
             <a class="nav-link fs-5" href="{% url 'cart' %}"><i class="bi bi-cart"></i></a>
+            {% if cartItems %}
+              <p class="red-circle">{{ cartItems }}</p>
+              {% else %}
+              <p class="red-circle">0</p>
+            {% endif %}
         </li>
             {% if user.is_authenticated %}
               <li class="nav-item">
