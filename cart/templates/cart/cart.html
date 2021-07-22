@@ -26,7 +26,7 @@
         <span class="lead">${{ order.get_cart_total|floatformat:2 }}</span>
     </div>
     <div class="col-sm-12 col-lg-3 d-flex flex-row my-2">
-        <a class="btn btn-success text-uppercase" href="">Checkout</a>
+        <a class="btn btn-success text-uppercase" href="{% url 'checkout' %}">Checkout</a>
     </div>
 </div>
 <hr>

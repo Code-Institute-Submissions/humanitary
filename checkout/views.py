@@ -1,13 +1,10 @@
 from django.shortcuts import render
 from accounts.models import *
 
-
 # Create your views here.
 
 
-def shopping_cart(request):
-    """ Renders the shopping cart page and cart content """
-
+def checkout(request):
     if request.user.is_authenticated:
         customer = request.user.customer
         order, created = Order.objects.get_or_create(
@@ -18,4 +15,4 @@ def shopping_cart(request):
         order = {'get_cart_total': 0, 'get_cart_items': 0}
 
     context = {'items': items, 'order': order}
-    return render(request, 'cart/cart.html', context)
+    return render(request, 'checkout/checkout.html', context)

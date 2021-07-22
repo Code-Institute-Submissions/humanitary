@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'accounts',
     'shop',
     'cart',
+    'checkout',
 ]
 
 SOCIALACCOUNT_PROVIDERS = {'facebook': {}, 'google': {}, 'twitter': {}}
