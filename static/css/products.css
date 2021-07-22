@@ -1,3 +1,4 @@
+/* Products page in the shop */
 #products {
   background-color: rgb(237, 237, 237);
 }
@@ -12,6 +13,7 @@
   object-fit: cover;
 }
 
+/* Makes the product car flex */
 .flex-field {
   display: flex;
   justify-content: space-around;

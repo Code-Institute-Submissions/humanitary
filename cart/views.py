@@ -1,12 +1,20 @@
 from django.shortcuts import render
+from accounts.models import *
+
 
 # Create your views here.
 
 
 def shopping_cart(request):
-    """ Renders the shopping cart page """
-    return render(request, 'cart/cart.html')
+    """ Renders the shopping cart page and cart content """
 
-
-def add_to_cart(request, item_id):
-    """ Adds the specified item to the shopping cart """
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(
+            customer=customer, complete=False)
+        items = order.orderitem_set.all()
+    else:
+        items = []
+        order = {'get_cart_total': 0, 'get_cart_items': 0}
+    context = {'items': items, 'order': order}
+    return render(request, 'cart/cart.html', context)
