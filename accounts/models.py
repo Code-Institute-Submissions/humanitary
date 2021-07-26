@@ -6,6 +6,9 @@ from shop.models import Product
 
 # Create your models here.
 
+# Used these models from Dennis Ivy's Tutorial on
+# django E-commerce.
+
 
 class Customer(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)

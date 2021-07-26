@@ -6,8 +6,8 @@ import json
 
 # Create your views here.
 
-# Used code snippets from Denis Ivy's tutorial on
-# django E-commerce, although somewhat modified to fit my own needs.
+# Used code from Dennis Ivy's tutorial on
+# django E-commerce, although modified to fit my own needs.
 
 
 def shopping_cart(request):
@@ -27,6 +27,8 @@ def shopping_cart(request):
 
 
 def updateCart(request):
+    """ Adds and removes quantities of items to/from the shopping cart """
+
     data = json.loads(request.body)
     productId = data['productId']
     action = data['action']

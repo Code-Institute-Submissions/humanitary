@@ -51,7 +51,11 @@ INSTALLED_APPS = [
     'shop',
     'cart',
     'checkout',
+
+    'crispy_forms'
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap'
 
 SOCIALACCOUNT_PROVIDERS = {'facebook': {}, 'google': {}, 'twitter': {}}
 
@@ -86,6 +90,10 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'cart.contexts.cartItems',
             ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field'
+            ]
         },
     },
 ]

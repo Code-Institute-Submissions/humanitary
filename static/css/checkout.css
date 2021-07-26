@@ -3,3 +3,9 @@
 h3 {
   font-family: "Open Sans";
 }
+
+.product-image {
+  width: 100%;
+  height: 11em;
+  object-fit: cover;
+}
