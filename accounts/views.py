@@ -9,4 +9,12 @@ from django.contrib.auth.models import Group, User
 
 @login_required
 def profile_page(request):
-    return render(request, 'accounts/profile.html')
+    customer = request.user.customer
+    email = request.user.email
+
+    context = {
+        'customer_name': customer,
+        'customer_email': email,
+    }
+
+    return render(request, 'accounts/profile.html', context)

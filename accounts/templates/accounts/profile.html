@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center mt-5">
+                    <h2 class="display-4">My Profile</h2>
+                </div>
+            </div>
+        </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-10 mx-auto align-items-center shadow-sm p-3 mb-5 bg-body rounded">
+                    <div class="d-flex justify-content-around">
+                        <div class="text-uppercase fw-bold">
+                        <p>Username</p>
+                        <p>Email</p>
+                    </div>
+                    <div>
+                        <p>{{customer_name}}</p>
+                        <p>{{customer_email}}</p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            {% if items %}
+            <div class="row">
+                <div class="col-sm-12 col-md-10 mx-auto">
+                    {% for item in items  %}
+                        <div class="w-75 shadow-sm mb-5 bg-body rounded mx-auto d-flex">
+                            <img class="w-25" src="{{item.product.image.url}}" alt="">
+                            <div class="w-75 mx-3">
+                                <p class="lead">{{item.product.name}}</p>
+                                <p>{{item.product.description}}</p>
+                                <div class="d-flex justify-content-around w-25">
+                                    <p class="fw-bold">x{{item.quantity}}</p>
+                                    <p class="fw-bold">${{item.product.price}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+    </div>
+{% endblock  %}
