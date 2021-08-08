@@ -33,7 +33,7 @@
                             <p class="card-text">{{ product.description }}</p>
                             <div class="flex-field">
                                 {% csrf_token %}
-                                <h3 class="text-uppercase fs-4">{{ product.price }}</h3>
+                                <h3 class="text-uppercase fs-4">${{ product.price }}</h3>
                                 <button data-product={{ product.id }} data-action="add" class="update-cart btn btn-warning text-uppercase px-3 rounded-pill">
                                 <span><i class="bi bi-cart3 fs-5"></i></span>
                                 <span class="text-uppercase ms-3 fs-6">Add to cart</span>

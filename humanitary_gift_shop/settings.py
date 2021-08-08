@@ -47,15 +47,12 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'django.contrib.staticfiles',
     'home',
-    'accounts',
+    'accounts.apps.AccountsConfig',
     'shop',
     'cart',
     'checkout',
-
-    'crispy_forms'
 ]
 
-CRISPY_TEMPLATE_PACK = 'bootstrap'
 
 SOCIALACCOUNT_PROVIDERS = {'facebook': {}, 'google': {}, 'twitter': {}}
 
