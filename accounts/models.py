@@ -14,10 +14,15 @@ class Customer(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     name = CharField(max_length=200, null=True)
     email = CharField(max_length=200, null=True)
+    device = models.CharField(max_length=200, null=True, blank=True)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
-        return str(self.name)
+        if self.name:
+            name = self.name
+        else:
+            name = self.device
+        return str(name)
 
 
 class Order(models.Model):

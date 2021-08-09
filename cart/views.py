@@ -19,9 +19,11 @@ def shopping_cart(request):
             customer=customer, complete=False)
         items = order.orderitem_set.all()
     else:
-        items = []
-        order = {'get_cart_total': 0, 'get_cart_items': 0}
-
+        device = request.COOKIES['device']
+        customer, created = Customer.objects.get_or_create(device=device)
+    order, created = Order.objects.get_or_create(
+        customer=customer, complete=False)
+    items = order.orderitem_set.all()
     context = {'items': items, 'order': order}
     return render(request, 'cart/cart.html', context)
 
@@ -36,7 +38,12 @@ def updateCart(request):
     print('action:', action)
     print('productId:', productId)
 
-    customer = request.user.customer
+    if request.user.is_authenticated:
+        customer = request.user.customer
+    else:
+        device = request.COOKIES['device']
+        customer, created = Customer.objects.get_or_create(device=device)
+
     product = Product.objects.get(id=productId)
     order, created = Order.objects.get_or_create(
         customer=customer, complete=False)
