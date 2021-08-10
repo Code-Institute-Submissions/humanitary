@@ -7,15 +7,36 @@ for (let i = 0; i < updateCart.length; i++) {
   updateCart[i].addEventListener("click", function () {
     let productId = this.dataset.product;
     let action = this.dataset.action;
-    console.log("productId:", productId, "Action:", action);
-
-    console.log("USER:", user);
+    console.log("productId:", productId, "action:", action);
     if (user === "AnonymousUser") {
-      console.log("User is not authenticated");
+      guestUserItem(productId, action);
     } else {
       updateOrder(productId, action);
     }
   });
+}
+
+// Adds cookie items to the guest user cart
+function guestUserItem(productId, action) {
+  console.log("User is not logged in");
+
+  if (action == "add") {
+    if (cart[productId] == undefined) {
+      cart[productId] = { quantity: 1 };
+    } else {
+      cart[productId]["quantity"] += 1;
+    }
+  }
+  if (action == "remove") {
+    cart[productId]["quantity"] -= 1;
+
+    if (cart[productId]["quantity"] <= 0) {
+      console.log("Remove item");
+      delete cart[productId];
+    }
+  }
+  console.log("Cart", cart);
+  document.cookie = "cart=" + JSON.stringify(cart) + ";domain=;path=/";
 }
 
 updateOrder = function (productId, action) {

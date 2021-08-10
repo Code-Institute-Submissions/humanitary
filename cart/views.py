@@ -13,19 +13,14 @@ import json
 def shopping_cart(request):
     """ Renders the shopping cart page and cart content """
 
-    if request.user.is_authenticated:
+    try:
         customer = request.user.customer
-        order, created = Order.objects.get_or_create(
-            customer=customer, complete=False)
-        items = order.orderitem_set.all()
-    else:
+
+    except:
         device = request.COOKIES['device']
         customer, created = Customer.objects.get_or_create(device=device)
-    order, created = Order.objects.get_or_create(
-        customer=customer, complete=False)
-    items = order.orderitem_set.all()
-    context = {'items': items, 'order': order}
-    return render(request, 'cart/cart.html', context)
+
+    return render(request, 'cart/cart.html')
 
 
 def updateCart(request):
@@ -38,9 +33,9 @@ def updateCart(request):
     print('action:', action)
     print('productId:', productId)
 
-    if request.user.is_authenticated:
+    try:
         customer = request.user.customer
-    else:
+    except:
         device = request.COOKIES['device']
         customer, created = Customer.objects.get_or_create(device=device)
 
