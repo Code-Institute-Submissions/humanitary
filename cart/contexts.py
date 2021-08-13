@@ -4,18 +4,27 @@ import json
 
 
 def cartItems(request):
+    """ Checks if the user is authenticated, and if it is,
+    it checks for the orders in the database and renders them on
+    the page. Otherwise, it creates a cookie object that represents the cart
+    and renders that instead """
+
     if request.user.is_authenticated:
         customer = request.user.customer
         order, created = Order.objects.get_or_create(
             customer=customer, complete=False)
         items = order.orderitem_set.all()
         cartItems = order.get_cart_items
+
+        for item in items:
+            print(item.quantity)
+
     else:
         try:
             cart = json.loads(request.COOKIES['cart'])
         except:
             cart = {}
-        print('Cart:', cart)
+        # print('Cart:', cart)
         items = []
         order = {'get_cart_total': 0, 'get_cart_items': 0}
         cartItems = order['get_cart_items']

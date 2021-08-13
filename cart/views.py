@@ -55,5 +55,7 @@ def updateCart(request):
 
     if orderItem.quantity <= 0:
         orderItem.delete()
+    elif action == 'delete':
+        orderItem.delete()
 
     return JsonResponse('Item was added', safe=False)

@@ -58,6 +58,7 @@
         </div>
         <div class="col-3 d-flex flex-column justify-content-center text-center">
             <p>${{ item.get_total }}</p>
+            <button class="btn btn-danger mx-auto update-cart" data-product="{{ item.product.id }}" data-action="delete" >Remove</button>
         </div>
     </div>
 {% endfor %}

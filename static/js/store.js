@@ -16,7 +16,7 @@ for (let i = 0; i < updateCart.length; i++) {
   });
 }
 
-// Adds cookie items to the guest user cart
+// Updates and adds cookie items to the guest user cart
 function guestUserItem(productId, action) {
   console.log("User is not logged in");
 
@@ -35,10 +35,15 @@ function guestUserItem(productId, action) {
       delete cart[productId];
     }
   }
+  if (action == "delete") {
+    delete cart[productId];
+  }
   console.log("Cart", cart);
   document.cookie = "cart=" + JSON.stringify(cart) + ";domain=;path=/";
+  location.reload();
 }
 
+// Updates the order with the clicked items if the user is logged in
 updateOrder = function (productId, action) {
   console.log("User is authenticated, sending data...");
 
