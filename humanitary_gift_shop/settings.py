@@ -135,7 +135,7 @@ WSGI_APPLICATION = 'humanitary_gift_shop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = ''
+DATABASES = {}
 
 if 'DATABASE_URL' in os.environ:
     DATABASES['default'] = dj_database_url.config(
