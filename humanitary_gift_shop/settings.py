@@ -13,7 +13,8 @@ from pathlib import Path
 import os
 import dj_database_url
 
-SECRET_KEY = 'django-insecure-l3%tldm@6bc^1zv*-m6&!zyh6c&mgga^wwwg@2-(ntr77*$^^5'
+SECRET_KEY = os.environ.get('SECRET_KEY')
+print(SECRET_KEY)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent

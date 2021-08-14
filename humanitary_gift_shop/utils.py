@@ -4,7 +4,9 @@ from accounts.models import *
 from shop.models import *
 from django.urls import reverse
 from django.http import JsonResponse, HttpResponse
-from humanitary_gift_shop.secretstuff import STRIPE_PRIVATE_KEY, STRIPE_PUBLIC_KEY
+import os
+STRIPE_PRIVATE_KEY = os.environ.get('STRIPE_PRIVATE_KEY')
+STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
 stripe.api_key = STRIPE_PRIVATE_KEY
 
 # This file is where I've put the logic for my checkout page, my cart data and the checkout session. I put it here in order to clean up my views
