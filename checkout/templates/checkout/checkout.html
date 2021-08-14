@@ -41,7 +41,14 @@ var paymentBtn = document.getElementById("payment-button");
 paymentBtn.addEventListener("click", (event) => {
   stripe
     .redirectToCheckout({ sessionId: "{{ session_id }}" })
-    .then(function (result) {});
+    .then(function (result) {})
+    .then(() => {
+        cart = {};
+
+        document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+        window.location.href = "{% url 'home' %}"
+    })
+
 });
 
 

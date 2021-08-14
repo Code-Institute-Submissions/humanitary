@@ -9,6 +9,7 @@ from humanitary_gift_shop.utils import updateCart
 
 def shopping_cart(request):
     """ Renders the shopping cart page and cart content """
+
     try:
         customer = request.user.customer
 

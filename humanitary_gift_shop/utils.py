@@ -1,14 +1,13 @@
 import stripe
 import json
-from django.db.models.fields import CommaSeparatedIntegerField
 from accounts.models import *
 from shop.models import *
 from django.urls import reverse
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from humanitary_gift_shop.secretstuff import STRIPE_PRIVATE_KEY, STRIPE_PUBLIC_KEY
 stripe.api_key = STRIPE_PRIVATE_KEY
 
-""" This file is where I've put the logic for my checkout page, my cart data and the checkout session. I put it here in order to clean up my view """
+# This file is where I've put the logic for my checkout page, my cart data and the checkout session. I put it here in order to clean up my views
 
 
 def cookieCart(request):
@@ -138,8 +137,10 @@ def checkout_session(request):
     checkout_session = stripe.checkout.Session.create(
         payment_method_types=['card'],
         line_items=getItems(request, cartData(request)['items']),
+
         # Used code snippet from Denis Ivy's tutorial on
         # django E-commerce, although somewhat modified to fit my own needs.
+
         mode='payment',
         success_url=request.build_absolute_uri(
             reverse('home')) + '?session_id={CHECKOUT_SESSION_ID}',

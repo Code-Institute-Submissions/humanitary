@@ -7,6 +7,7 @@ from accounts.models import *
 
 def shop(request):
     """ Renders the shopping page with all of the products """
+
     products = Product.objects.all()
     context = {'products': products, }
     return render(request, 'shop/products.html', context)
