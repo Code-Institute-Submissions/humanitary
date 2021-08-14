@@ -81,6 +81,27 @@ footer {
   color: rgb(165, 165, 165);
 }
 
+/* MEDIA QUERIES */
+
+/* Small devices */
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+  .hero-text {
+    font-size: 1.5rem;
+  }
+
+  .btn-gift {
+    transform: scale(0.7);
+  }
+
+  .heading {
+    font-size: 1.5rem;
+  }
+
+  .section-text {
+    font-size: 1rem;
+  }
+}
+
 /* Medium devices */
 @media only screen and (max-width: 768px) {
   .hero-bg {
