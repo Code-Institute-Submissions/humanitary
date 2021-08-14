@@ -7,6 +7,10 @@ ul {
   padding: 0;
 }
 
+label {
+  display: none;
+}
+
 .bi-google {
   color: white;
   margin-right: 1em;
@@ -20,8 +24,4 @@ ul {
 
 .btn-google:hover {
   color: white;
-}
-
-label {
-  display: none;
 }

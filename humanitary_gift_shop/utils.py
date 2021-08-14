@@ -136,7 +136,7 @@ def checkout_session(request):
     """ Takes in getItems and cartData and uses that information to display
     the current products and amount to pay in the stripe checkout session """
 
-    checkout_session = stripe.checkout.Session.create(
+    session = stripe.checkout.Session.create(
         payment_method_types=['card'],
         line_items=getItems(request, cartData(request)['items']),
 
@@ -150,8 +150,8 @@ def checkout_session(request):
     )
 
     context = {
-        'session_id': checkout_session.id,
-        'checkout_session': checkout_session,
+        'session_id': session.id,
+        'session': session,
         'stripe_public_key': STRIPE_PUBLIC_KEY,
     }
     return context
