@@ -1,1 +1,1 @@
-web: gunicorn humanitary_gift_shop.wsgi --log-file -
+web: gunicorn humanitary_gift_shop.wsgi:application
