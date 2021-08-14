@@ -82,6 +82,7 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
+
 ROOT_URLCONF = 'humanitary_gift_shop.urls'
 
 TEMPLATES = [

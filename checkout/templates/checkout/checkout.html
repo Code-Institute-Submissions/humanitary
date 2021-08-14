@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block extracss %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/checkout.css' %}">
+{% endblock  %}
+
 {% block content %}
 <div class="container">     
     <hr>

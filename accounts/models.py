@@ -25,6 +25,9 @@ class Customer(models.Model):
         return str(name)
 
 
+
+
+
 class Order(models.Model):
     customer = models.ForeignKey(
         Customer, on_delete=SET_NULL, blank=True, null=True)
