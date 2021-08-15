@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+import custom_storages
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 print(SECRET_KEY)
