@@ -194,6 +194,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"), ]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+AWS_S3_OVERWRITE = False
+AWS_S3_ACL = None
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 if 'USE_AWS' in os.environ:
     # Bucket config
     AWS_STORAGE_BUCKET_NAME = 'humanitary'
