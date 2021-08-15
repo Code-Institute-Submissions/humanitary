@@ -29,8 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = False
 
 # ALLOWED_HOSTS = ['humanitary.herokuapp.com', '127.0.0.1', 'localhost']
-ALLOWED_HOSTS = ['humanitary.herokuapp.com',
-                 '.herokuapp.com', 'localhost:8080', 's3.amazonaws.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -192,12 +191,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"), ]
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-AWS_S3_OVERWRITE = False
+AWS_S3_OVERWRITE = True
 AWS_S3_ACL = None
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 if 'USE_AWS' in os.environ:
     # Bucket config
