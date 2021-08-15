@@ -31,7 +31,7 @@ def checkout(request):
 def stripe_webhook(request):
     print('webhook!')
 
-    endpoint_secret = 'whsec_hKGJ5sOTNMBs8eJkulxzxIrDuxOL9Mj4'
+    endpoint_secret = os.environ.get('endpoint_secret')
     payload = request.body
     sig_header = request.META['HTTP_STRIPE_SIGNATURE']
     event = None
