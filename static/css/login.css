@@ -32,11 +32,6 @@ label[for="id_username"] {
   color: white;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-}
-
 form a {
   display: none;
 }
