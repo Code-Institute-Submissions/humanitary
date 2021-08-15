@@ -1,0 +1,26 @@
+body {
+  background-color: #f8f9fa !important;
+}
+
+.quantity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.change-quantity {
+  width: 16px;
+  cursor: pointer;
+  display: block;
+}
+
+.quantity-container {
+  display: flex;
+  width: 25%;
+  justify-content: space-between;
+}
+
+.item-total {
+  margin: 0 !important;
+}
