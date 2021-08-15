@@ -7,22 +7,19 @@
 
 
 
-{% block content %}
-{% include 'includes/navbar.html' %}
-<div class="container-fluid">
-  <div class="row justify-content-center py-5 mt-5">
-    <div class="col-sm-12 col-md-10 col-lg-6">
-      <div class="p-3 text-left shadow p-3 mb-5 bg-body rounded text-center login-box">
+{% block inner_content %}
 
-  <h1>{% trans "Sign In" %}</h1>
   
-  {% get_providers as socialaccount_providers %}
-  
-  {% if socialaccount_providers %}
-  <p>{% blocktrans with site.name as site_name %}Please sign in with one
-  of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
-  for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
-  
+ 
+      <h2>{% trans "Sign In" %}</h2>
+
+      {% get_providers as socialaccount_providers %}
+      
+      {% if socialaccount_providers %}
+      <p class="w-50">{% blocktrans with site.name as site_name %}Please sign in with one
+      of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
+      for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+   
   <div class="socialaccount_ballot">
   
     <ul class="socialaccount_providers">
@@ -47,11 +44,8 @@
     <input type='hidden' name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
     {% endif %}
     <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-    <button class="primaryAction btn btn-warning rounded-5 text-uppercase" type="submit">{% trans "Sign In" %}</button>
+    <button class="primaryAction btn btn-warning text-uppercase" type="submit">{% trans "Sign In" %}</button>
   </form>
-</div>
-</div>
-</div>
-</div>
-{% include 'includes/footer.html' %}
+
+
 {% endblock %}

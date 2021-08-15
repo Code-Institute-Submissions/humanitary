@@ -7,7 +7,13 @@ ul {
   padding: 0;
 }
 
-label {
+label[for="id_login"],
+label[for="id_password"],
+label[for="id_password1"],
+label[for="id_password2"],
+label[for="id_email"],
+label[for="id_email2"],
+label[for="id_username"] {
   display: none;
 }
 
@@ -24,4 +30,13 @@ label {
 
 .btn-google:hover {
   color: white;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form a {
+  display: none;
 }

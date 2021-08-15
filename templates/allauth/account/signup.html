@@ -6,12 +6,8 @@
 {% endblock %}
 
 
-{% block content %}
-{% include 'includes/navbar.html' %}
-<div class="container-fluid h-100">
-  <div class="row justify-content-center py-5 mt-5">
-    <div class="col-sm-12 col-md-10 col-lg-4">
-      <div class="card p-3 text-left shadow p-3 mb-5 bg-body rounded d-flex flex-column text-center">
+{% block inner_content %}
+
         <h1>{% trans "Sign Up" %}</h1>
 
         <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
@@ -24,9 +20,5 @@
           {% endif %}
             <button class="btn btn-warning" type="submit">{% trans "Sign Up" %} &raquo;</button>
         </form>
-</div>
-</div>
-</div>
-</div>
-{% include 'includes/footer.html' %}
+
 {% endblock %}
