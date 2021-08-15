@@ -5,11 +5,20 @@ from shop.models import *
 from django.urls import reverse
 from django.http import JsonResponse, HttpResponse
 import os
+import string
+import random
 STRIPE_PRIVATE_KEY = os.environ.get('STRIPE_PRIVATE_KEY')
 STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
 stripe.api_key = STRIPE_PRIVATE_KEY
 
 # This file is where I've put the logic for my checkout page, my cart data and the checkout session. I put it here in order to clean up my views
+
+
+def random_string_generator(size=10, chars=string.ascii_lowercase + string.digits):
+    random_string = ''.join(random.choice(chars) for _ in range(size))
+
+    print(random_string)
+    return random_string
 
 
 def cookieCart(request):
@@ -70,6 +79,9 @@ def getItems(request, my_list):
 
     cart_items = []
     if request.user.is_authenticated:
+        customer = request.user.customer
+        order = Order.objects.get(
+            customer=customer, complete=False)
         for item in my_list:
             intitial_price = item.product.price * 100
             converted_price = int(intitial_price)
@@ -80,9 +92,11 @@ def getItems(request, my_list):
                 'amount': converted_price,
                 'currency': 'usd'
             }
+
             cart_items.append(products)
         return cart_items
 
+    # Loops through any given list and appends them to the session
     for item in my_list:
         intitial_price = item['product']['price'] * 100
         converted_price = int(intitial_price)
@@ -136,9 +150,18 @@ def checkout_session(request):
     """ Takes in getItems and cartData and uses that information to display
     the current products and amount to pay in the stripe checkout session """
 
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order = Order.objects.get(
+            customer=customer, complete=False)
+
     session = stripe.checkout.Session.create(
         payment_method_types=['card'],
         line_items=getItems(request, cartData(request)['items']),
+        metadata={
+            'customer': customer.id,
+            'order': order,
+        },
 
         # Used code snippet from Denis Ivy's tutorial on
         # django E-commerce, although somewhat modified to fit my own needs.

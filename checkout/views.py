@@ -1,10 +1,14 @@
+import urllib.request
 from cart.contexts import cartItems
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
-from humanitary_gift_shop.utils import checkout_session
+from accounts.models import Order
+from humanitary_gift_shop.utils import checkout_session, random_string_generator
 from django.views.decorators.csrf import csrf_exempt
+from cart.contexts import cartItems
 import stripe
 import os
+
 STRIPE_PRIVATE_KEY = os.environ.get('STRIPE_PRIVATE_KEY')
 stripe.api_key = STRIPE_PRIVATE_KEY
 
@@ -16,11 +20,14 @@ stripe.api_key = STRIPE_PRIVATE_KEY
 
 def checkout(request):
     """ This view renders the checkout and stripe page """
+    customer = request.user.customer
+    order = Order.objects.get(
+        customer=customer, complete=False)
 
     return render(request, 'checkout/checkout.html', checkout_session(request))
 
 
-@csrf_exempt
+@ csrf_exempt
 def stripe_webhook(request):
     print('webhook!')
 
@@ -41,10 +48,20 @@ def stripe_webhook(request):
         return HttpResponse(status=400)
 
     # Handle the checkout.session.completed event
+
+    # Saves the order as complete
     if event['type'] == 'checkout.session.completed':
         session = event['data']['object']
-        cartItems = {}
-        print(session, cartItems)
+        customer = session['metadata']['customer']
+        try:
+            order = Order.objects.get(
+                customer=customer, complete=False)
+            order.complete = True
+            order.transaction_id = random_string_generator()
+            order.save()
+        except:
+            pass
 
+        print(session)
     # Passed signature verification
     return HttpResponse(status=200)

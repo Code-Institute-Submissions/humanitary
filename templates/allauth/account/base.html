@@ -14,13 +14,13 @@
         {% block scripts %}
     {% endblock  %}
   </head>
-  <body class="bg-light d-flex align-items-center justify-content-center">
+  <body class="bg-light">
     {% block body %}
     {% include 'includes/navbar.html' %}
     {% block content %}
-    <div class="container">
+    <div class="container my-auto">
       <div class="row">
-      <div class="col-12 mx-auto d-flex flex-column justify-content-center align-items-center p-2">
+      <div class="col-sm-12 col-lg-8 mx-auto d-flex flex-column align-items-center p-2 text-center">
       {% block inner_content %}
       {% endblock  %}
       </div>
