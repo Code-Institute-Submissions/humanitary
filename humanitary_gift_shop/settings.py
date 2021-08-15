@@ -29,7 +29,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = False
 
 # ALLOWED_HOSTS = ['humanitary.herokuapp.com', '127.0.0.1', 'localhost']
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['humanitary.herokuapp.com',
+                 '.herokuapp.com', 'localhost:8080', 's3.amazonaws.com']
 
 
 # Application definition
