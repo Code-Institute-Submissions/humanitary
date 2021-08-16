@@ -26,10 +26,6 @@ def cartItems(request):
             completed_orders_list.append(item)
 
         all_order_items = OrderItem.objects.all()
-        for item in all_order_items:
-            if item.order in completed_orders_list:
-                print(item.product, item.product.price,
-                      item.quantity, item.get_total)
 
     else:
         cookieData = cookieCart(request)
@@ -37,5 +33,5 @@ def cartItems(request):
         items = cookieData['items']
         cartItems = cookieData['cartItems']
     context = {'items': items, 'order': order,
-               'cartItems': cartItems, 'completed_orders': completed_orders, "all_order_items": all_order_items, "completed_orders_list": completed_orders_list}
+               'cartItems': cartItems}
     return context

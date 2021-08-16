@@ -35,7 +35,6 @@ def thank_you(request):
 
 @ csrf_exempt
 def stripe_webhook(request):
-    print('webhook!')
 
     endpoint_secret = os.environ.get('endpoint_secret')
     payload = request.body
@@ -65,7 +64,5 @@ def stripe_webhook(request):
         order.complete = True
         order.transaction_id = random_string_generator()
         order.save()
-
-        # print(session)
     # Passed signature verification
     return HttpResponse(status=200)
