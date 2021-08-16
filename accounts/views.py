@@ -9,20 +9,20 @@ from shop.models import *
 @login_required
 def profile_page(request):
     completed_orders_list = []
-    if request.user.is_authenticated:
-        customer = request.user.customer
-        order, created = Order.objects.get_or_create(
-            customer=customer, complete=False)
-        items = order.orderitem_set.all()
-        cartItems = order.get_cart_items
-        completed_orders = Order.objects.filter(
-            customer=customer, complete=True)
-        completed_orders_list = []
 
-        for item in completed_orders:
-            completed_orders_list.append(item)
+    customer = request.user.customer
+    order, created = Order.objects.get_or_create(
+        customer=customer, complete=False)
+    items = order.orderitem_set.all()
+    cartItems = order.get_cart_items
+    completed_orders = Order.objects.filter(
+        customer=customer, complete=True)
+    completed_orders_list = []
 
-        all_order_items = OrderItem.objects.all()
+    for item in completed_orders:
+        completed_orders_list.append(item)
+
+    all_order_items = OrderItem.objects.all()
 
     context = {
         'customer_name': customer,
