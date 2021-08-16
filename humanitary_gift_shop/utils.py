@@ -177,7 +177,7 @@ def checkout_session(request):
 
         mode='payment',
         success_url=request.build_absolute_uri(
-            reverse('home')) + '?session_id={CHECKOUT_SESSION_ID}',
+            reverse('thank-you')) + '?session_id={CHECKOUT_SESSION_ID}',
         cancel_url=request.build_absolute_uri(reverse('cart')),
     )
 

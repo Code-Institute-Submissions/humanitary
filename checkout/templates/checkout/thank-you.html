@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extracss %}
+    <link rel="stylesheet" href="{% static 'css/thank-you.css' %}">
+{% endblock  %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-flex flex-column">
+                <h2 class="display-4">Thanks for purchasing!</h2>
+                <a class="btn btn-warning mx-auto" href="{% url 'home' %}">Back to home page</a>
+            </div>
+        </div>
+    </div>
+{% endblock  %}

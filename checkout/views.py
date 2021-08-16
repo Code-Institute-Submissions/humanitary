@@ -29,6 +29,10 @@ def checkout(request):
     return render(request, 'checkout/checkout.html', checkout_session(request))
 
 
+def thank_you(request):
+    return render(request, 'checkout/thank-you.html')
+
+
 @ csrf_exempt
 def stripe_webhook(request):
     print('webhook!')
@@ -61,9 +65,6 @@ def stripe_webhook(request):
         order.complete = True
         order.transaction_id = random_string_generator()
         order.save()
-
-        if 'session_id' in request.GET:
-            print('Hello')
 
         # print(session)
     # Passed signature verification
