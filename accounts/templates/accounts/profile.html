@@ -24,12 +24,12 @@
                     </div>
                 </div>
             </div>
-            {% if items %}
+            {% if completed_orders %}  
             <div class="row">
                 <div class="col-sm-12 col-md-10 mx-auto">
                 <hr>
                     <p class="text-muted text-center">Order History</p>
-                    
+                       
                     <div class="order-history text-center">
                         <table class="table table-borderless">
                             <thead>
@@ -41,10 +41,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for item in items %}
+                                {% for item in all_order_items %}
+                                    {% if item.order in completed_orders_list %}
                                     <tr>
                                         <td>
-                                            {{item.product.name}}
+                                            {{item.product}}
                                         </td>
                                         <td>
                                             ${{item.product.price}}
@@ -56,24 +57,11 @@
                                             ${{item.get_total}}
                                         </td>
                                     </tr>
+                                    {% endif %}
                                 {% endfor %}
                             </tbody>
                         </table>
                     </div>
-                    
-                    {% comment %} {% for item in items  %}
-                        <div class="w-75 shadow-sm mb-5 bg-body rounded mx-auto d-flex">
-                            <img class="w-25" src="{{item.product.image.url}}" alt="">
-                            <div class="w-75 mx-3">
-                                <p class="lead">{{item.product.name}}</p>
-                                <p>{{item.product.description}}</p>
-                                <div class="d-flex justify-content-around w-25">
-                                    <p class="fw-bold">x{{item.quantity}}</p>
-                                    <p class="fw-bold">${{item.product.price}}</p>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %} {% endcomment %}
                 </div>
             </div>
             {% endif %}
