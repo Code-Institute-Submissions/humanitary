@@ -8,9 +8,8 @@ from shop.models import *
 
 @login_required
 def profile_page(request):
-    completed_orders_list = []
-
     customer = request.user.customer
+    email = request.user.email
     order, created = Order.objects.get_or_create(
         customer=customer, complete=False)
     items = order.orderitem_set.all()
@@ -26,7 +25,7 @@ def profile_page(request):
 
     context = {
         'customer_name': customer,
-        'customer_email': customer.email, 'items': items, 'order': order,
+        'customer_email': email, 'items': items, 'order': order,
         'cartItems': cartItems, 'completed_orders': completed_orders, "all_order_items": all_order_items, "completed_orders_list": completed_orders_list}
 
     return render(request, 'accounts/profile.html', context)
