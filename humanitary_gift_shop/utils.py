@@ -14,7 +14,11 @@ stripe.api_key = STRIPE_PRIVATE_KEY
 # This file is where I've put the logic for my checkout page, my cart data and the checkout session. I put it here in order to clean up my views
 
 
+# Generates a random string to use use as transaction_id
+# Found on stackoverflow
 def random_string_generator(size=10, chars=string.ascii_lowercase + string.digits):
+    """ Generates a random string to use use as transaction_id """
+
     random_string = ''.join(random.choice(chars) for _ in range(size))
 
     print(random_string)
@@ -154,6 +158,11 @@ def checkout_session(request):
         customer = request.user.customer
         order = Order.objects.get(
             customer=customer, complete=False)
+    else:
+        device = request.COOKIES['device']
+        customer, created = Customer.objects.get_or_create(device=device)
+        cookieData = cookieCart(request)
+        order = cookieData['cartItems']
 
     session = stripe.checkout.Session.create(
         payment_method_types=['card'],

@@ -1,11 +1,10 @@
 import urllib.request
-from cart.contexts import cartItems
-from django.http.response import HttpResponse, HttpResponseNotFound
+from django.http import response
+from django.http.response import HttpResponse
 from django.shortcuts import render
-from accounts.models import Order
-from humanitary_gift_shop.utils import checkout_session, random_string_generator
+from accounts.models import Order, Customer
+from humanitary_gift_shop.utils import checkout_session, random_string_generator, cookieCart
 from django.views.decorators.csrf import csrf_exempt
-from cart.contexts import cartItems
 import stripe
 import os
 
@@ -20,10 +19,13 @@ stripe.api_key = STRIPE_PRIVATE_KEY
 
 def checkout(request):
     """ This view renders the checkout and stripe page """
-    customer = request.user.customer
-    order = Order.objects.get(
-        customer=customer, complete=False)
-
+    try:
+        customer = request.user.customer
+        order = Order.objects.get(
+            customer=customer, complete=False)
+    except:
+        device = request.COOKIES['device']
+        customer, created = Customer.objects.get_or_create(device=device)
     return render(request, 'checkout/checkout.html', checkout_session(request))
 
 
@@ -53,15 +55,16 @@ def stripe_webhook(request):
     if event['type'] == 'checkout.session.completed':
         session = event['data']['object']
         customer = session['metadata']['customer']
-        try:
-            order = Order.objects.get(
-                customer=customer, complete=False)
-            order.complete = True
-            order.transaction_id = random_string_generator()
-            order.save()
-        except:
-            pass
 
-        print(session)
+        order = Order.objects.get(
+            customer=customer, complete=False)
+        order.complete = True
+        order.transaction_id = random_string_generator()
+        order.save()
+
+        if 'session_id' in request.GET:
+            print('Hello')
+
+        # print(session)
     # Passed signature verification
     return HttpResponse(status=200)

@@ -50,6 +50,11 @@
       document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
     }
 
+    if (window.location.href.indexOf('session_id') > -1) {
+      cart = {}
+      document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+    }
+
     console.log('Cart:', cart)
 
   {% comment %} UUID generator for guest users, found on stackoverflow {% endcomment %}
