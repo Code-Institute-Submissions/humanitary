@@ -1,5 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
+
+{% block extracss %}
+
+    
+
+{% endblock  %}
+
 {% block content %}
 
 <section id="main" class="container-fluid hero-bg">
@@ -78,7 +85,7 @@
             </div>
         </div>
         <div class="row">
-            <form class="mb-5 d-flex justify-content-center" method="POST">
+            <form class="mb-5 d-flex justify-content-center" method="GET" action="{% url 'subscribe' %}"">
                     <input type="email" class="form-control w-25 rounded-0" id="exampleInputEmail1" placeholder="Email" required>
                     <button type="submit" class="btn btn-warning rounded-0 text-uppercase">Subscribe</button>
                 </form>

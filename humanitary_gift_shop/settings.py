@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 
 ALLOWED_HOSTS = ['*']
@@ -228,3 +228,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Mailchimp credentials
+MAILCHIMP_API_KEY = '2e4c6df28fc30e0171646fc2cdb86779-us5'
+MAILCHIMP_DATA_CENTER = 'us5'
+MAILCHIMP_EMAIL_LIST_ID = '2c4d321781'
