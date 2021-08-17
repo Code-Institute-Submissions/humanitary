@@ -1,6 +1,6 @@
-from allauth.account.signals import user_signed_up
+from allauth.account.signals import user_signed_up, user_logged_in
 from django.dispatch import receiver
-from .models import Customer
+from .models import Customer, Order
 
 
 @receiver(user_signed_up)
