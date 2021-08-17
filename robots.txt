@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /checkout/thank-you.html
+Disallow: /accounts/login.html
+Disallow: /accounts/logout.html
