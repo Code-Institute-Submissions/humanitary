@@ -8,3 +8,8 @@ def index(request):
     """ Renders the home page """
 
     return render(request, 'home/index.html')
+
+
+def error_404(request, exception):
+    data = {}
+    return render(request, 'home/404.html', data)
