@@ -6,6 +6,5 @@ from accounts.models import Order
 @xframe_options_exempt
 def index(request):
     """ Renders the home page """
-    Order.objects.all().delete()
 
     return render(request, 'home/index.html')
