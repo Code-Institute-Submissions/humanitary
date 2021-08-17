@@ -17,6 +17,20 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.sitemaps.views import sitemap
+from home.sitemaps import HomeViewSitemap
+from shop.sitemaps import ShopViewSitemap
+from checkout.sitemaps import CheckoutViewSitemap
+from cart.sitemaps import CartViewSitemap
+from accounts.sitemaps import ProfileViewSitemap
+
+sitemaps = {
+    'static': HomeViewSitemap,
+    'shop': ShopViewSitemap,
+    'checkout': CheckoutViewSitemap,
+    'cart': CartViewSitemap,
+    'profile': ProfileViewSitemap
+}
 
 
 urlpatterns = [
@@ -27,6 +41,7 @@ urlpatterns = [
     path('cart/', include('cart.urls')),
     path('my-profile/', include('accounts.urls')),
     path('checkout/', include('checkout.urls')),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
